@@ -66,6 +66,6 @@ def view(request):
         url = req.path + "?horn=1"
     #animal = data.decode("base64").decode("zlib")
     data = base64.b64decode(data)
-    animal = zlib.decompress(data)
+    animal = zlib.decompress(data).decode('ascii')
     html = TEMPLATE.format(animal=animal, url=url, link=link, home=home)
     return Response(html)
